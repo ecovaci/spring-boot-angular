@@ -2,15 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from './user';
 import {Observable} from 'rxjs';
-import {Location} from "@angular/common";
-import {LocationServiceService} from "./location-service.service";
+import {ExternalLocation} from "../environments/environment";
 
 @Injectable()
 export class UserService {
 
   private readonly usersUrl: string;
 
-  constructor(private http: HttpClient, location:LocationServiceService) {
+  constructor(private http: HttpClient, location:ExternalLocation) {
     this.usersUrl = location.prepareExternalUrl("/users") ;
   }
 
