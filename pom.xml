@@ -7,9 +7,9 @@
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>spring-boot-angular-backend</module>
 		<module>spring-boot-angular-frontend</module>
-		<module>spring-boot-angular-bundle</module>
+		<module>spring-boot-angular-backend</module>
+		<!--<module>spring-boot-angular-bundle</module>-->
 	</modules>
 	<name>spring-boot-angular</name>
 	<description>Demo project for Spring Boot</description>
