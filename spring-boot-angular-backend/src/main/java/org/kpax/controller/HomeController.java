@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Swathi
  *
  */
-@Controller
-@RequestMapping("/home")
+/*@Controller
+@RequestMapping("/ng/home")*/
 public class HomeController {
-	
+	/*
 	@GetMapping
 	public String home() {
 		return "forward:/index.html";
-	}
+	}*/
 
 }

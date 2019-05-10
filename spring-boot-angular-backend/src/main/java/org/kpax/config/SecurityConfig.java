@@ -30,21 +30,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		//@formatter:off
-		if (!csrfEnabled) {
+		if (csrfEnabled) {
+			http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+		} else {
 			http.csrf().disable();
 		}
+
 		http.formLogin().loginProcessingUrl("/api/authentication")
 				.successHandler(ajaxAuthenticationSuccessHandler())
-                .failureHandler(ajaxAuthenticationFailureHandler()).permitAll()/**/
+                .failureHandler(ajaxAuthenticationFailureHandler()).permitAll()
 				.and()
 				.authorizeRequests()
 				.antMatchers("/account/login").permitAll()
-				//.antMatchers("/api/authentication").permitAll()
-				.antMatchers("/api/**").authenticated()
-				//.and()
-
-				/*.and()
-				.httpBasic()*/;
+				.antMatchers("/ng/**").permitAll()
+				.antMatchers("/api/**").authenticated();
 		//@formatter:on
 	}
 

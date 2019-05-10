@@ -2,15 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
 import {Observable} from 'rxjs';
-import {ExternalLocation} from "../../environments/environment";
 
 @Injectable()
 export class UserService {
 
   private readonly usersUrl: string;
 
-  constructor(private http: HttpClient, location:ExternalLocation) {
-    this.usersUrl = 'users/list' ;
+  constructor(private http: HttpClient) {
+    this.usersUrl = 'api/users/list' ;
   }
 
   public findAll(): Observable<User[]> {

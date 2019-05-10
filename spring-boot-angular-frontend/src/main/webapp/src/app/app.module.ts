@@ -9,6 +9,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserService } from './service/user.service';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import {NgxWebstorageModule} from "ngx-webstorage";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxWebstorageModule.forRoot(),
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

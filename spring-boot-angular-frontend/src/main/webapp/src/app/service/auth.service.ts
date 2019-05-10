@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthServerProvider} from "./auth-provider.service";
 import {Account} from "../model/account";
+import {SessionStorageService} from 'ngx-webstorage';
 import * as _ from 'lodash';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class AuthService {
 
   private router: Router;
 
-  constructor(private http: HttpClient, private authServerProvider: AuthServerProvider) {
+  constructor(private http: HttpClient, private authServerProvider: AuthServerProvider, private $sessionStorage: SessionStorageService) {
   }
 
   account: Account = null;
@@ -24,6 +25,7 @@ export class AuthService {
           this.account = new Account(data.username, _.chain(data.authorities).map(
             (authority) => authority.authority
           ).value());
+          this.$sessionStorage.store('currentUser', this.account);
           resolve(this.account);
         },
         err => {
@@ -36,8 +38,15 @@ export class AuthService {
 
   }
 
-  isUserLoggedIn() :boolean {
-    return this.account != null;
+  isUserLoggedIn(): boolean {
+    let result: boolean;
+    if (this.$sessionStorage.retrieve('currentUser')) {
+      result = true;
+    } else {
+      result = false;
+    }
+    console.log("result", result)
+    return result;
   }
 
   logout() {

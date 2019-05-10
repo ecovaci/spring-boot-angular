@@ -12,7 +12,7 @@ import java.security.Principal;
  * @author kamal berriga
  */
 @RestController
-@RequestMapping("account")
+@RequestMapping("/api/account")
 public class AccountController {
 
 	public static final Logger logger = LoggerFactory.getLogger(AccountController.class);
