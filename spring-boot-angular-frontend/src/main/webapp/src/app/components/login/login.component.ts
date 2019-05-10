@@ -6,8 +6,8 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./login.component.css']/*,
+  encapsulation: ViewEncapsulation.None*/
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
@@ -26,20 +26,6 @@ export class LoginComponent implements OnInit {
       }).catch((reason) => {
       this.errorMessage = reason.error.message;
     });
-
-
-    /*    (e) => {
-          this.router.navigate(['home']);
-          console.log(e);
-          let resp: any;
-          resp = e.principal;
-          // this.user.fullName = 'ndh';
-          if (resp) {
-            // store user details  in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(resp));
-          }
-        }*/
-
 
   }
 }

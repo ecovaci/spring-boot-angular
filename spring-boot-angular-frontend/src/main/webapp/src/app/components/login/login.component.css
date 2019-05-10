@@ -1,14 +1,7 @@
 /*
  * Specific styles of signin component
  */
-/*
- * General styles
- */
-body, html {
-  height: 100%;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(rgb(104, 145, 162), rgb(16, 138, 252));
-}
+
 
 .card-container.card {
   max-width: 350px;
