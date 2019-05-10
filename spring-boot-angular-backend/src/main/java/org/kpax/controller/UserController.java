@@ -12,14 +12,14 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
- 
-    @GetMapping("/users")
+
+    @GetMapping("/users/list")
     public List<User> getUsers() {
         System.out.println("+++++ ==== Get users === +++++");
         return (List<User>) userRepository.findAll();
     }
- 
-    @PostMapping("/users")
+
+    @PostMapping("/users/add")
     void addUser(@RequestBody User user) {
         userRepository.save(user);
     }

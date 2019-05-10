@@ -10,7 +10,7 @@ export class UserService {
   private readonly usersUrl: string;
 
   constructor(private http: HttpClient, location:ExternalLocation) {
-    this.usersUrl = location.prepareExternalUrl("/users") ;
+    this.usersUrl = 'users/list' ;
   }
 
   public findAll(): Observable<User[]> {
