@@ -42,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 				.antMatchers("/account/login").permitAll()
+				.antMatchers("/en/ng-app/**").permitAll()
+				.antMatchers("/ro/ng-app/**").permitAll()
 				.antMatchers("/ng-app/**").permitAll()
 				.antMatchers("/api/**").authenticated();
 		//@formatter:on

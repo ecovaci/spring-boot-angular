@@ -4,7 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "start:ro": "ng serve --proxy-config proxy.conf.json --configuration=ro --base-href=/ng-app-ro",
+    "start:en": "ng serve --proxy-config proxy.conf.json --configuration=en --base-href=/ng-app-en",
+    "build": "ng build --prod",
+    "build:ro": "ng build --configuration=production-ro --deploy-url=ro/ --base-href=/ng-app-ro",
+    "build:en": "ng build --configuration=production-en --deploy-url=en/ --base-href=/ng-app-en",
+    "int:extract": "ng xi18n --output-path locale",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

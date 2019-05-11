@@ -47,26 +47,46 @@
                     </execution>
 
                     <execution>
-                        <id>npm run build</id>
+                        <id>npm run build en</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>
 
                         <configuration>
-                            <arguments>run build</arguments>
+                            <arguments>run build:en</arguments>
                         </configuration>
                     </execution>
-                    <!--<execution>
-                        <id>prod</id>
+
+                    <execution>
+                        <id>npm run build ro</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>
+
                         <configuration>
-                            <arguments>run-script build</arguments>
+                            <arguments>run build:ro</arguments>
                         </configuration>
-                        <phase>generate-resources</phase>
-                    </execution>-->
+                    </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/webapp/dist</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <skipIfEmpty>true</skipIfEmpty>
+                </configuration>
             </plugin>
         </plugins>
     </build>

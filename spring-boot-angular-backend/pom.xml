@@ -66,8 +66,7 @@
                             <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/spring-boot-angular-frontend/src/main/webapp/dist/np-app/
-                                    </directory>
+                                    <directory>${project.parent.basedir}/spring-boot-angular-frontend/src/main/webapp/dist</directory>
                                 </resource>
                             </resources>
                         </configuration>

@@ -56,6 +56,72 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "production-ro": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "outputPath": "dist/ro/",
+              "i18nFile": "src/locale/messages.ro.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ro",
+              "i18nMissingTranslation": "error"
+            },
+            "production-en": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "outputPath": "dist/en/"
+            },
+            "ro": {
+              "aot": true,
+              "outputPath": "dist/ro/",
+              "i18nFile": "src/locale/messages.ro.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ro",
+              "i18nMissingTranslation": "error"
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/en/"
             }
           }
         },
@@ -67,6 +133,18 @@
           "configurations": {
             "production": {
               "browserTarget": "np-app:build:production"
+            },
+            "production-ro": {
+              "browserTarget": "np-app:build:production-ro"
+            },
+            "production-en": {
+              "browserTarget": "np-app:build:production-en"
+            },
+            "ro": {
+              "browserTarget": "np-app:build:ro"
+            },
+            "en": {
+              "browserTarget": "np-app:build:en"
             }
           }
         },
