@@ -29,7 +29,6 @@ export class AuthService {
           resolve(this.account);
         },
         err => {
-          console.log("=====", err)
           this.logout();
           reject(err);
         }
@@ -45,7 +44,6 @@ export class AuthService {
     } else {
       result = false;
     }
-    console.log("result", result)
     return result;
   }
 
