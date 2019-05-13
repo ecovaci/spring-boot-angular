@@ -10,6 +10,8 @@ import { UserService } from './service/user.service';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {MenubarModule} from "primeng/menubar";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {NgxWebstorageModule} from "ngx-webstorage";
     UserListComponent,
     UserFormComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import {NgxWebstorageModule} from "ngx-webstorage";
     HttpClientModule,
     FormsModule,
     NgxWebstorageModule.forRoot(),
+    MenubarModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ package org.kpax.config;
 
 import org.kpax.security.AjaxAuthenticationFailureHandler;
 import org.kpax.security.AjaxAuthenticationSuccessHandler;
+import org.kpax.security.AjaxLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,10 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http.csrf().disable();
 		}
 
-		http.formLogin().loginProcessingUrl("/api/authentication")
+		http
+			.formLogin().loginProcessingUrl("/api/authentication")
 				.successHandler(ajaxAuthenticationSuccessHandler())
                 .failureHandler(ajaxAuthenticationFailureHandler()).permitAll()
-				.and()
+			.and()
+            .logout()
+				.logoutUrl("/api/logout")
+				.logoutSuccessHandler(ajaxLogoutSuccessHandler())
+                .permitAll()
+			.and()
 				.authorizeRequests()
 				.antMatchers("/account/login").permitAll()
 				.antMatchers("/en/ng-app/**").permitAll()
@@ -57,6 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public AjaxAuthenticationFailureHandler ajaxAuthenticationFailureHandler() {
 		return new AjaxAuthenticationFailureHandler();
+	}
+
+	@Bean
+	public AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler() {
+		return new AjaxLogoutSuccessHandler();
 	}
 
 	@Override

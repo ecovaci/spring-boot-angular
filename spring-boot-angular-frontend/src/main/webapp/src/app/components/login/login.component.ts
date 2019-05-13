@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/user";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
       .then((value) => {
         this.router.navigate(['home']);
       }).catch((reason) => {
-      this.errorMessage = reason.error.message;
+      if (typeof reason.error == "string") {
+        this.errorMessage = reason.message;
+      } else {
+        this.errorMessage = reason.error.message;
+      }
     });
 
   }

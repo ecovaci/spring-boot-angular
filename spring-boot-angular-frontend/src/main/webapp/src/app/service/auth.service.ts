@@ -10,6 +10,7 @@ import * as _ from 'lodash';
   providedIn: 'root'
 })
 export class AuthService {
+  private readonly CURRENT_USER_KEY: string = '__currentUser__';
 
   private router: Router;
 
@@ -25,10 +26,11 @@ export class AuthService {
           this.account = new Account(data.username, _.chain(data.authorities).map(
             (authority) => authority.authority
           ).value());
-          this.$sessionStorage.store('currentUser', this.account);
+          this.$sessionStorage.store(this.CURRENT_USER_KEY, this.account);
           resolve(this.account);
         },
         err => {
+          console.log("login error ---------- ", err);
           this.logout();
           reject(err);
         }
@@ -39,7 +41,7 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
     let result: boolean;
-    if (this.$sessionStorage.retrieve('currentUser')) {
+    if (this.$sessionStorage.retrieve(this.CURRENT_USER_KEY)) {
       result = true;
     } else {
       result = false;
@@ -48,6 +50,7 @@ export class AuthService {
   }
 
   logout() {
-
+    this.authServerProvider.logout().subscribe();
+    this.$sessionStorage.clear(this.CURRENT_USER_KEY);
   }
 }
