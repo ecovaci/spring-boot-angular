@@ -13,15 +13,14 @@ import org.springframework.web.servlet.resource.ResourceResolverChain;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/*@Profile("prod")
-@Configuration*/
-public class MvcConfig /*implements WebMvcConfigurer*/ {
-/*
+@Profile("prod")
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		//registry.addViewController("/").setViewName("/en/index.html");
 		registry.addViewController("/ng-app-en/**").setViewName("/en/index.html");
 		registry.addViewController("/ng-app-ro/**").setViewName("/ro/index.html");
-	}*/
+	}
 
 }
