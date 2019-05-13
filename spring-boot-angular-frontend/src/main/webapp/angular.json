@@ -112,7 +112,6 @@
               "outputPath": "dist/en/"
             },
             "ro": {
-              "aot": true,
               "outputPath": "dist/ro/",
               "i18nFile": "src/locale/messages.ro.xlf",
               "i18nFormat": "xlf",
@@ -120,7 +119,6 @@
               "i18nMissingTranslation": "error"
             },
             "en": {
-              "aot": true,
               "outputPath": "dist/en/"
             }
           }
