@@ -12,8 +12,6 @@ import * as _ from 'lodash';
 export class AuthService {
   private readonly CURRENT_USER_KEY: string = '__currentUser__';
 
-  private router: Router;
-
   constructor(private http: HttpClient, private authServerProvider: AuthServerProvider, private $sessionStorage: SessionStorageService) {
   }
 

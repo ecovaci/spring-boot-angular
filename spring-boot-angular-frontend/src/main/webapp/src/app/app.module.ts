@@ -12,6 +12,9 @@ import { HomeComponent } from './components/home/home.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MenubarModule} from "primeng/menubar";
+import {ButtonModule} from "primeng/button";
+import {ConfirmDialogModule, InputTextModule} from "primeng/primeng";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -29,6 +32,10 @@ import {MenubarModule} from "primeng/menubar";
     FormsModule,
     NgxWebstorageModule.forRoot(),
     MenubarModule,
+    ButtonModule,
+    InputTextModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

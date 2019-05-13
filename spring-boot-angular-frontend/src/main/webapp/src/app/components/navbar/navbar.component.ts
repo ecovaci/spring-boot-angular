@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {MenuItem} from "primeng/api";
+import {Component, OnInit} from '@angular/core';
+import {ConfirmationService, MenuItem} from "primeng/api";
+import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers: [ConfirmationService]
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[];
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router,private confirmationService: ConfirmationService) {
+  }
 
   ngOnInit() {
     this.items = [
@@ -38,4 +42,15 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
+  logout() {
+    console.log('logout');
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to perform this action?',
+      accept: () => {
+        this.authService.logout();
+        this.router.navigate(['login']);
+      }
+    });
+
+  }
 }
