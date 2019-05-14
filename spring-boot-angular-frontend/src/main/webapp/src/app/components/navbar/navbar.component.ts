@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConfirmationService, MenuItem} from "primeng/api";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
+import {EventService} from "../../service/event.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,9 @@ import {Router} from "@angular/router";
 export class NavbarComponent implements OnInit {
   items: MenuItem[];
 
-  constructor(private authService: AuthService, private router: Router,private confirmationService: ConfirmationService) {
+  constructor(private authService: AuthService, private router: Router,
+              private confirmationService: ConfirmationService,
+              private eventService: EventService) {
   }
 
   ngOnInit() {
@@ -52,5 +55,9 @@ export class NavbarComponent implements OnInit {
       }
     });
 
+  }
+
+  showDialog() {
+    this.eventService.broadcast('boo');
   }
 }

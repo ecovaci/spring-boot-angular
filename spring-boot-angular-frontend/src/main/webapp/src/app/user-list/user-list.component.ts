@@ -10,6 +10,7 @@ import { UserService } from '../service/user.service';
 export class UserListComponent implements OnInit {
 
   users: User[];
+  currentDate: Date = new Date();
 
   constructor(private userService: UserService) {
   }

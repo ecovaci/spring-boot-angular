@@ -13,8 +13,9 @@ import {NgxWebstorageModule} from "ngx-webstorage";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MenubarModule} from "primeng/menubar";
 import {ButtonModule} from "primeng/button";
-import {ConfirmDialogModule, InputTextModule} from "primeng/primeng";
+import {ConfirmDialogModule, DialogModule, InputTextModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HasAnyAuthorityDirective} from "./directive/has-any-authority.directive";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     UserFormComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    HasAnyAuthorityDirective
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ButtonModule,
     InputTextModule,
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DialogModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

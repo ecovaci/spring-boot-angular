@@ -24,6 +24,7 @@ export class AuthService {
           this.account = new Account(data.username, _.chain(data.authorities).map(
             (authority) => authority.authority
           ).value());
+          console.log("account", this.account);
           this.$sessionStorage.store(this.CURRENT_USER_KEY, this.account);
           resolve(this.account);
         },
@@ -45,6 +46,14 @@ export class AuthService {
       result = false;
     }
     return result;
+  }
+
+  hasAnyAuthority(authorities: string[]): boolean {
+    if (!this.account || !this.account.authorities) {
+      return false;
+    }
+
+    return _.find(this.account.authorities, function(auth) { return authorities.includes(auth); }) !== undefined;
   }
 
   logout() {

@@ -18,10 +18,9 @@ export class AuthServerProvider {
   }
 
   logout(): Observable<any> {
-   // return this.http.post('api/logout', {});
     return this.http.post('api/logout', {}, {observe: 'response'}).pipe(
       map((response: HttpResponse<any>) => {
-        // to get a new csrf token call the api
+        // to get a new csrf token call the api FIXME api/account is missing on server
         this.http.get('api/account').subscribe(() => {
         }, () => {
         });
