@@ -58,6 +58,6 @@ export class NavbarComponent implements OnInit {
   }
 
   showDialog() {
-    this.eventService.broadcast('boo');
+    //this.eventService.broadcast('boo');
   }
 }

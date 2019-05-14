@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {AuthServerProvider} from "./auth-provider.service";
 import {Account} from "../model/account";
 import {SessionStorageService} from 'ngx-webstorage';
@@ -15,18 +14,16 @@ export class AuthService {
   constructor(private http: HttpClient, private authServerProvider: AuthServerProvider, private $sessionStorage: SessionStorageService) {
   }
 
-  account: Account = null;
-
   authenticate(credentials): Promise<Account> {
     return new Promise((resolve, reject) => {
       this.authServerProvider.login(credentials).subscribe(
         data => {
-          this.account = new Account(data.username, _.chain(data.authorities).map(
+          let account: Account = new Account(data.username, _.chain(data.authorities).map(
             (authority) => authority.authority
           ).value());
-          console.log("account", this.account);
-          this.$sessionStorage.store(this.CURRENT_USER_KEY, this.account);
-          resolve(this.account);
+          console.log("account", account);
+          this.$sessionStorage.store(this.CURRENT_USER_KEY, account);
+          resolve(account);
         },
         err => {
           console.log("login error ---------- ", err);
@@ -40,7 +37,7 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
     let result: boolean;
-    if (this.$sessionStorage.retrieve(this.CURRENT_USER_KEY)) {
+    if (this.account) {
       result = true;
     } else {
       result = false;
@@ -49,11 +46,19 @@ export class AuthService {
   }
 
   hasAnyAuthority(authorities: string[]): boolean {
-    if (!this.account || !this.account.authorities) {
+    let account: Account = this.account;
+
+    if (!account || !account.authorities) {
       return false;
     }
 
-    return _.find(this.account.authorities, function(auth) { return authorities.includes(auth); }) !== undefined;
+    return _.find(account.authorities, function (auth) {
+      return authorities.includes(auth);
+    }) !== undefined;
+  }
+
+  get account(): Account {
+    return this.$sessionStorage.retrieve(this.CURRENT_USER_KEY);
   }
 
   logout() {

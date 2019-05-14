@@ -10,14 +10,19 @@ import { UserService } from '../service/user.service';
 export class UserListComponent implements OnInit {
 
   users: User[];
-  currentDate: Date = new Date();
+  _currentDate: Date = new Date();
 
   constructor(private userService: UserService) {
+
   }
 
   ngOnInit() {
     this.userService.findAll().subscribe(data => {
       this.users = data;
     });
+  }
+
+  private get currentDate():Date {
+    return this._currentDate;
   }
 }

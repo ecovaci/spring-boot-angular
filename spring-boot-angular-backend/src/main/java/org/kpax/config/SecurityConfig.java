@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
@@ -25,7 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**").antMatchers("/**/*.{js,html,css}", "/**/*.ico");
+		//@formatter:off
+		web.ignoring()
+				.antMatchers(HttpMethod.OPTIONS, "/**")
+				.antMatchers("/**/*.{js,html,css}", "/**/*.ico")
+				.antMatchers("/en/ng-app/**")
+				.antMatchers("/ro/ng-app/**")
+				.antMatchers("/ng-app/**");
+		//@formatter:on
 	}
 
 	@Override
@@ -38,20 +46,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 
 		http
-			.formLogin().loginProcessingUrl("/api/authentication")
-				.successHandler(ajaxAuthenticationSuccessHandler())
-                .failureHandler(ajaxAuthenticationFailureHandler()).permitAll()
+			.exceptionHandling()
+            .authenticationEntryPoint(new Http403ForbiddenEntryPoint())
 			.and()
-            .logout()
-				.logoutUrl("/api/logout")
-				.logoutSuccessHandler(ajaxLogoutSuccessHandler())
-                .permitAll()
+				.formLogin().loginProcessingUrl("/api/authentication")
+					.successHandler(ajaxAuthenticationSuccessHandler())
+					.failureHandler(ajaxAuthenticationFailureHandler()).permitAll()
+			.and()
+				.logout()
+					.logoutUrl("/api/logout")
+					.logoutSuccessHandler(ajaxLogoutSuccessHandler())
+					.permitAll()
 			.and()
 				.authorizeRequests()
 				.antMatchers("/account/login").permitAll()
-				.antMatchers("/en/ng-app/**").permitAll()
-				.antMatchers("/ro/ng-app/**").permitAll()
-				.antMatchers("/ng-app/**").permitAll()
 				.antMatchers("/api/**").authenticated();
 		//@formatter:on
 	}

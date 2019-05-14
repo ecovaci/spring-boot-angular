@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventService} from "./service/event.service";
+import {EventType} from "./model/event";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import {EventService} from "./service/event.service";
 })
 export class AppComponent implements OnInit {
   title = 'Spring Boot - Angular Application';
-  display: boolean;
+  displayLoginDialog: boolean;
 
   constructor(private eventService: EventService) {
 
@@ -17,12 +18,15 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.subscribe({
       next: value => {
-        if (value) {
-          console.log(value);
-          this.display = true;
-        }
+          this.displayLoginDialog = true;
       }
-    })
+    }, EventType.OpenLoginDialog);
+
+    this.eventService.subscribe({
+      next: value => {
+        this.displayLoginDialog = false;
+      }
+    }, EventType.CloseLoginDialog);
   }
 
 
