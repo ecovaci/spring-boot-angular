@@ -13,10 +13,18 @@ import {NgxWebstorageModule} from "ngx-webstorage";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {MenubarModule} from "primeng/menubar";
 import {ButtonModule} from "primeng/button";
-import {ConfirmDialogModule, DialogModule, InputTextModule} from "primeng/primeng";
+import {
+  CalendarModule,
+  ConfirmDialogModule,
+  DialogModule,
+  InputTextModule,
+  MegaMenuModule, MenuModule,
+  PanelMenuModule
+} from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HasAnyAuthorityDirective} from "./directive/has-any-authority.directive";
 import {AuthExpiredInterceptor} from "./interceptor/auth-expired.interceptor";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -39,7 +47,12 @@ import {AuthExpiredInterceptor} from "./interceptor/auth-expired.interceptor";
     InputTextModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
-    DialogModule
+    DialogModule,
+    MegaMenuModule,
+    PanelMenuModule,
+    CalendarModule,
+    NgxSpinnerModule,
+    MenuModule
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,

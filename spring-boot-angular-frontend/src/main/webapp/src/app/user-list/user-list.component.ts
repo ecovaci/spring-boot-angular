@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { UserService } from '../service/user.service';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../model/user';
+import {UserService} from '../service/user.service';
+import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-user-list',
@@ -17,12 +19,14 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findAll().subscribe(data => {
-      this.users = data;
+    this.userService.findAll().subscribe({
+      next: data => {
+        this.users = data;
+      }
     });
   }
 
-  private get currentDate():Date {
+  private get currentDate(): Date {
     return this._currentDate;
   }
 }

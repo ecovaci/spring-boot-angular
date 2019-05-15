@@ -1,7 +1,7 @@
 <div class="content-section implementation">
-  <p-menubar [model]="items">
-    <input type="text" pInputText placeholder="Search">
-    <button pButton (click)="logout()" label="Logout" icon="fas fa-sign-out-alt" style="margin-left:.25em"></button>
-    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
-  </p-menubar>
+  <p-panelMenu [model]="items">
+
+  </p-panelMenu>
+  <button pButton (click)="logout()" label="Logout" icon="fas fa-sign-out-alt" style="margin-left:.25em"></button>
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 </div>
