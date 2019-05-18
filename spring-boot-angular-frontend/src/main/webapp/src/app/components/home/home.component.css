@@ -55,14 +55,17 @@ body {
 
 #menu-toggle .btn.focus, .btn:focus {
   outline: 0;
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
 
 .topbar-link {
-   color: #f7f7f7 !important;
+  color: #f7f7f7 !important;
 }
 
 .topbar {
   background-color: #0ab7ef !important;
 }
+
+
+
 

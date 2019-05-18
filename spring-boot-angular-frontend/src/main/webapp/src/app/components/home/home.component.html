@@ -25,15 +25,20 @@
           <li class="nav-item active">
             <a class="nav-link topbar-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link topbar-link" href="#">Link</a>
-          </li>
+
           <li class="nav-item">
             <button type="button" class="btn  dropdown-toggle topbar-link" id="navbarDropdownAccount"
                     (click)="menu.toggle($event)">
               <i class="fas fa-user"></i>
             </button>
-            <p-menu #menu [popup]="true" [model]="items" appendTo="body"></p-menu>
+            <p-overlayPanel #menu appendTo="body">
+              <span> <img class="profile-img-card" style="border-radius: 50%;" width="50" height="50"
+                          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/> &nbsp; <strong>{{username}}</strong> </span>
+              <hr>
+               <button type="button" (click)="logout()" class="btn btn-link"><i class="fas fa-bell"></i> Notifications</button>
+              <hr>
+              <button type="button" (click)="logout()" class="btn btn-link"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </p-overlayPanel>
           </li>
         </ul>
 
@@ -66,5 +71,6 @@
 
 </div>
 <!-- /#wrapper -->
+<!--<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>-->
 
 

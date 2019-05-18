@@ -2,4 +2,10 @@
 /*
  * General styles
  */
+/*span.ui-menuitem-text {
+  white-space: pre-wrap !important;
+}*/
 
+.no-wrapping {
+  display: flex;
+}

@@ -1,21 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ConfirmationService, MenuItem} from "primeng/api";
+import {AccountComponent} from "../account/account.component";
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
-import {EventService} from "../../service/event.service";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  providers: [ConfirmationService]
+  styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent extends AccountComponent {
   items: MenuItem[];
 
-  constructor(private authService: AuthService, private router: Router,
-              private confirmationService: ConfirmationService,
-              private eventService: EventService) {
+  constructor(authService: AuthService, router: Router,
+              confirmationService: ConfirmationService) {
+    super(authService, router, confirmationService);
   }
 
   ngOnInit() {
@@ -68,7 +67,8 @@ export class NavbarComponent implements OnInit {
                 label: 'User',
                 icon: 'pi pi-fw pi-file',
               }
-            ]}
+            ]
+          }
         ]
       },
       {
@@ -95,19 +95,10 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
-  logout() {
-    console.log('logout');
-    this.confirmationService.confirm({
-      message: 'Are you sure that you want to perform this action?',
-      accept: () => {
-        this.authService.logout();
-        this.router.navigate(['login']);
-      }
-    });
-
-  }
 
   showDialog() {
     //this.eventService.broadcast('boo');
   }
+
+
 }

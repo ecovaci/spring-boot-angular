@@ -15,16 +15,19 @@ import {MenubarModule} from "primeng/menubar";
 import {ButtonModule} from "primeng/button";
 import {
   CalendarModule,
+  ConfirmationService,
   ConfirmDialogModule,
   DialogModule,
   InputTextModule,
-  MegaMenuModule, MenuModule,
-  PanelMenuModule
+  MegaMenuModule,
+  MenuModule, OverlayPanelModule,
+  PanelMenuModule, PanelModule
 } from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HasAnyAuthorityDirective} from "./directive/has-any-authority.directive";
 import {AuthExpiredInterceptor} from "./interceptor/auth-expired.interceptor";
 import {NgxSpinnerModule} from "ngx-spinner";
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    HasAnyAuthorityDirective
+    HasAnyAuthorityDirective,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -52,13 +56,15 @@ import {NgxSpinnerModule} from "ngx-spinner";
     PanelMenuModule,
     CalendarModule,
     NgxSpinnerModule,
-    MenuModule
+    MenuModule,
+    OverlayPanelModule,
+    PanelModule
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthExpiredInterceptor,
     multi: true
-  }],
+  }, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

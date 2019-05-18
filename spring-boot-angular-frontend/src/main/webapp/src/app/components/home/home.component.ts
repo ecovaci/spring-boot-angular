@@ -1,24 +1,34 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MenuItem} from "primeng/api";
+import {Component, OnInit} from '@angular/core';
+import {ConfirmationService, MenuItem} from "primeng/api";
+import {EventService} from "../../service/event.service";
+import {Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
+import {AccountService} from "../../service/account.service";
+import {AccountComponent} from "../account/account.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']/*,
-  encapsulation: ViewEncapsulation.None*/
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends AccountComponent {
   toggled: boolean;
   items: MenuItem[];
+  username: String;
 
-  constructor() { }
+  constructor(public authService: AuthService, router: Router,
+              confirmationService: ConfirmationService) {
+    super(authService, router, confirmationService);
+  }
 
   ngOnInit() {
+    this.username = this.authService.account.username;
     this.items = [{
-      label: 'File',
+      label: 'Account',
       items: [
-        {label: 'New', icon: 'pi pi-fw pi-plus'},
-        {label: 'Download', icon: 'pi pi-fw pi-download'}
+        {label: <string>this.authService.account.username,},
+        {label: 'Logout', icon: 'fa fa-sign-out-alt', command: event1 => {this.logout()}},
+        {label: 'Notifications', icon: 'fas fa-bell'}
       ]
     },
       {
@@ -33,4 +43,5 @@ export class HomeComponent implements OnInit {
   toggleMenu() {
     this.toggled = !this.toggled;
   }
+
 }
