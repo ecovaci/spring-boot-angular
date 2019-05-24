@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private userService: UserService, public putils:MyUtils) {
+  constructor(private userService: UserService, public putils:PUtilsService) {
     //event.first = First row offset
     //event.rows = Number of rows per page
     //event.sortField = Field name to sort with

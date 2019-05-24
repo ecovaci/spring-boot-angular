@@ -6,14 +6,17 @@ import {LayoutComponent} from "./core/layout/layout.component";
 import {HomeComponent} from "./core/home/home.component";
 
 const routes: Routes = [
-
   {
     path: '',
     component: LayoutComponent,
-    pathMatch: 'full',
     canActivate: [AuthGaurdService],
     children: [
-      {path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGaurdService]},
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGaurdService]
+      },
       {
         path: 'users', loadChildren: './admin/admin.module#AdminModule',
         canActivate: [AuthGaurdService]
@@ -21,11 +24,7 @@ const routes: Routes = [
     ]
   },
 
-  {
-    path: 'home',
-    loadChildren: './core/core.module#CoreModule',
-    canActivate: [AuthGaurdService]
-  },
+  {path: 'home', redirectTo: ''},
 
   {path: 'login', component: LoginComponent}
 ];

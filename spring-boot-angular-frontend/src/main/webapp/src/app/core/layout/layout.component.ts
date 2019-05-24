@@ -10,24 +10,9 @@ import {LogoutComponent} from "../logout/logout.component";
 })
 export class LayoutComponent extends LogoutComponent {
   toggled: boolean;
-  items: MenuItem[];
 
   ngOnInit() {
-    this.items = [{
-      label: 'Account',
-      items: [
-        {label: <string>this.authService.account.username,},
-        {label: 'Logout', icon: 'fa fa-sign-out-alt', command: event1 => {this.logout()}},
-        {label: 'Notifications', icon: 'fas fa-bell'}
-      ]
-    },
-      {
-        label: 'Edit',
-        items: [
-          {label: 'Add User', icon: 'pi pi-fw pi-user-plus'},
-          {label: 'Remove User', icon: 'pi pi-fw pi-user-minus'}
-        ]
-      }];
+
   }
 
   toggleMenu() {

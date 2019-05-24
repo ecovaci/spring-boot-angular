@@ -9,8 +9,8 @@ import {UsersComponent} from "./users/users.component";
 const routes: Routes = [
   {
     path: '', component: UsersComponent, canActivate: [AuthGaurdService],
-    children: [{path: 'list', component: UserListComponent, canActivate: [AuthGaurdService], outlet: 'boo'},
-      {path: 'add', component: UserFormComponent, canActivate: [AuthGaurdService], outlet: 'boo'}]
+    children: [{path: 'list', component: UserListComponent, canActivate: [AuthGaurdService]},
+      {path: 'add', component: UserFormComponent, canActivate: [AuthGaurdService]}]
   }
 ];
 

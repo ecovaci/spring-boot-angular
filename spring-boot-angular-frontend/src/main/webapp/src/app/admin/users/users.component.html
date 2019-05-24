@@ -1,18 +1,3 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card bg-dark my-5">
-        <div class="card-body">
-          <h2 class="card-title text-center text-white py-3"></h2>
-          <ul class="text-center list-inline py-3">
-            <li class="list-inline-item" *hasAnyAuthority="['ROLE_USER']"><a
-              [routerLink]="[{outlets: {boo: ['list']}}]" class="btn btn-info">List Users</a></li>
-            <li class="list-inline-item"><a [routerLink]="[{outlets: {boo: ['add']}}]" class="btn btn-info">Add
-              User</a></li>
-          </ul>
-        </div>
-      </div>
-      <router-outlet name="boo"></router-outlet>
-    </div>
-  </div>
+   <router-outlet></router-outlet>
 </div>
