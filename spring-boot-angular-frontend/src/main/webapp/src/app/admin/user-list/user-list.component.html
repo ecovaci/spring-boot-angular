@@ -1,0 +1,29 @@
+
+    <p-table #table [columns]="cols" [value]="users" [lazy]="true" (onLazyLoad)="loadCarsLazy($event)" [paginator]="true"
+             [rows]="4" [totalRecords]="totalRecords" [loading]="loading"  [resizableColumns]="true">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th  [pSortableColumn]="'name'" style="width: 30%;" pResizableColumn>
+            Name
+            <p-sortIcon [field]="'name'"></p-sortIcon>
+          </th>
+          <th  [pSortableColumn]="'email'" style="width: 70%;" pResizableColumn>
+            Email
+            <p-sortIcon [field]="'email'"></p-sortIcon>
+          </th>
+        </tr>
+        <tr>
+          <th *ngFor="let col of columns">
+            <input pInputText type="text" (input)="putils.filter(table, $event.target.value, col.field, col.filterMatchMode)">
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+

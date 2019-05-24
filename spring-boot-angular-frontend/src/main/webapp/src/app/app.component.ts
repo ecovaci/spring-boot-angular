@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {EventService} from "./service/event.service";
-import {EventType} from "./model/event";
+import {EventService} from "./core/services/event.service";
+import {EventType} from "./shared/models/event";
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
 

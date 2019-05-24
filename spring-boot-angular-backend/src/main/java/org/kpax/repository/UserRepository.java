@@ -1,8 +1,8 @@
 package org.kpax.repository;
 
 import org.kpax.entity.User;
-import org.springframework.data.repository.CrudRepository;
+import org.kpax.filfter.repository.support.QuerydslExecutorJpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {}
+public interface UserRepository extends QuerydslExecutorJpaRepository<User, Long> {}

@@ -3,11 +3,11 @@ package org.kpax.service;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.kpax.entity.QUser;
 import org.kpax.entity.User;
+import org.kpax.filfter.model.Filter;
 import org.kpax.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.querydsl.QSort;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -23,16 +23,10 @@ public class TestService {
 	@Autowired
 	TestRepository testRepository;
 
-	public Page<User> getUsers() {
+	public Page<User> getUsers(Pageable pageable, Filter[] filters) {
 		JPAQuery<User> query = new JPAQuery<User>(entityManager);
 		query = query.from(QUser.user);
-		PageRequest pageRequest = PageRequest.of(0, 3, QSort.by(QUser.user.name.desc()));
-
-		return testRepository.getPageableQuery(query, pageRequest);
-
-		/*
-		return JpaUtils.applyPagination(entityManager, QUser.user, query,
-				pageRequest);*/
+		return testRepository.executeQuery(query, pageable, filters);
 	}
 
 	public List<User> findAll () {

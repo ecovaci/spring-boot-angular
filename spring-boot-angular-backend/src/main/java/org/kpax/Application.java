@@ -4,9 +4,8 @@
 package org.kpax;
 
 import org.kpax.entity.User;
+import org.kpax.filfter.repository.support.QuerydslExecutorJpaRepositoryImpl;
 import org.kpax.repository.UserRepository;
-import org.kpax.repository.support.CustomQuerydslPredicateExecutor;
-import org.kpax.repository.support.CustomQuerydslPredicateExecutorImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.stream.Stream;
 
 
-@EnableJpaRepositories(repositoryBaseClass = CustomQuerydslPredicateExecutorImpl.class)
+@EnableJpaRepositories(repositoryBaseClass = QuerydslExecutorJpaRepositoryImpl.class)
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 

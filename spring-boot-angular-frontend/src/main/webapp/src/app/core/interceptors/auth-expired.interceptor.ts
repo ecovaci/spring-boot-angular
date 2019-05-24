@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {AuthServerProvider} from '../service/auth-provider.service';
-import {EventService} from '../service/event.service';
-import {EventModel, EventType} from "../model/event";
+import {AuthServerProvider} from '../services/auth-provider.service';
+import {EventService} from '../services/event.service';
+import {EventModel, EventType} from "../../shared/models/event";
 
 @Injectable()
 export class AuthExpiredInterceptor implements HttpInterceptor {

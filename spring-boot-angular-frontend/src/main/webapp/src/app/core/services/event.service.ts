@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {PartialObserver, Subject} from "rxjs";
-import {EventModel, EventType} from "../model/event";
+import {EventModel, EventType} from "../../shared/models/event";
 import "rxjs-compat/add/operator/filter";
 
 @Injectable({

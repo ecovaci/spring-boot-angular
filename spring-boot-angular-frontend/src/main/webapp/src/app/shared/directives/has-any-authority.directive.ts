@@ -1,5 +1,5 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
-import {AuthService} from "../service/auth.service";
+import {AuthService} from "../../core/services/auth.service";
 
 /**
  * @whatItDoes Conditionally includes an HTML element if current user has any

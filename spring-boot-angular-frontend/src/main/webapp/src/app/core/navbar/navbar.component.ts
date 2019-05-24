@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
 import {ConfirmationService, MenuItem} from "primeng/api";
-import {AccountComponent} from "../account/account.component";
-import {AuthService} from "../../service/auth.service";
+import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {LogoutComponent} from "../logout/logout.component";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent extends AccountComponent {
+export class NavbarComponent extends LogoutComponent {
   items: MenuItem[];
 
   constructor(authService: AuthService, router: Router,

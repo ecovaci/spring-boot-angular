@@ -1,10 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {UserListComponent} from './user-list/user-list.component';
-import {UserFormComponent} from './user-form/user-form.component';
-import {HomeComponent} from "./components/home/home.component";
-import {LoginComponent} from "./components/login/login.component";
-import {AuthGaurdService} from "./service/auth-gaurd.service";
+import {LoginComponent} from "./core/login/login.component";
+import {AuthGaurdService} from "./core/services/auth-gaurd.service";
 
 const routes: Routes = [
   {
@@ -14,10 +11,11 @@ const routes: Routes = [
     canActivate: [AuthGaurdService]
   },
   {
-    path: 'home', component: HomeComponent, canActivate: [AuthGaurdService],
-    children: [{path: 'users', component: UserListComponent, canActivate: [AuthGaurdService], outlet: 'boo'},
-      {path: 'adduser', component: UserFormComponent, canActivate: [AuthGaurdService], outlet: 'boo'}]
+    path: 'home',
+    loadChildren: './core/core.module#CoreModule',
+    canActivate: [AuthGaurdService]
   },
+
   {path: 'login', component: LoginComponent}
 ];
 

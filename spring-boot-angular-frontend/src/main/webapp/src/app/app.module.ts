@@ -4,13 +4,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
-import {UserListComponent} from './user-list/user-list.component';
-import {UserFormComponent} from './user-form/user-form.component';
-import {UserService} from './service/user.service';
-import {LoginComponent} from './components/login/login.component';
-import {HomeComponent} from './components/home/home.component';
+import {UserService} from './core/services/user.service';
+import {LoginComponent} from './core/login/login.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
-import {NavbarComponent} from './components/navbar/navbar.component';
 import {MenubarModule} from "primeng/menubar";
 import {ButtonModule} from "primeng/button";
 import {
@@ -20,25 +16,23 @@ import {
   DialogModule,
   InputTextModule,
   MegaMenuModule,
-  MenuModule, OverlayPanelModule,
-  PanelMenuModule, PanelModule
+  MenuModule,
+  OverlayPanelModule,
+  PanelMenuModule,
+  PanelModule
 } from "primeng/primeng";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HasAnyAuthorityDirective} from "./directive/has-any-authority.directive";
-import {AuthExpiredInterceptor} from "./interceptor/auth-expired.interceptor";
+import {AuthExpiredInterceptor} from "./core/interceptors/auth-expired.interceptor";
 import {NgxSpinnerModule} from "ngx-spinner";
-import { AccountComponent } from './components/account/account.component';
+import {TableModule} from "primeng/table";
+import {MyUtils} from "./shared/utilities/utils";
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
-    UserFormComponent,
-    LoginComponent,
-    HomeComponent,
-    NavbarComponent,
-    HasAnyAuthorityDirective,
-    AccountComponent
+    /*    UserListComponent,
+        UserFormComponent,*/
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -58,13 +52,16 @@ import { AccountComponent } from './components/account/account.component';
     NgxSpinnerModule,
     MenuModule,
     OverlayPanelModule,
-    PanelModule
+    PanelModule,
+    TableModule
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthExpiredInterceptor,
     multi: true
-  }, ConfirmationService],
+  }, ConfirmationService, MyUtils],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.kpax</groupId>
-	<artifactId>spring-boot-angular</artifactId>
-	<packaging>pom</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<modules>
-		<module>spring-boot-angular-frontend</module>
-		<module>spring-boot-angular-backend</module>
-		<!--<module>spring-boot-angular-bundle</module>-->
-	</modules>
-	<name>spring-boot-angular</name>
-	<description>Demo project for Spring Boot</description>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.kpax</groupId>
+    <artifactId>spring-boot-angular</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>spring-boot-angular-frontend</module>
+        <module>spring-boot-angular-backend</module>
+    </modules>
+    <name>spring-boot-angular</name>
+    <description>Demo project for Spring Boot</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.4.RELEASE</version>
-		<relativePath/>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+        <relativePath/>
+    </parent>
 
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <url>http://192.168.0.101:8882/repository/maven-public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <url>http://192.168.0.101:8882/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.kpax</groupId>
+                <artifactId>filfter</artifactId>
+                <version>1.0.0-RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

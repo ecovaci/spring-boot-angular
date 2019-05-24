@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthServerProvider} from "./auth-provider.service";
-import {Account} from "../model/account";
+import {Account} from "../../shared/models/account";
 import {SessionStorageService} from 'ngx-webstorage';
 import * as _ from 'lodash';
 
@@ -11,7 +11,8 @@ import * as _ from 'lodash';
 export class AuthService {
   private readonly CURRENT_USER_KEY: string = '__currentUser__';
 
-  constructor(private http: HttpClient, private authServerProvider: AuthServerProvider, private $sessionStorage: SessionStorageService) {
+  constructor(private http: HttpClient, private authServerProvider: AuthServerProvider,
+              private $sessionStorage: SessionStorageService) {
   }
 
   authenticate(credentials): Promise<Account> {
@@ -21,12 +22,10 @@ export class AuthService {
           let account: Account = new Account(data.username, _.chain(data.authorities).map(
             (authority) => authority.authority
           ).value());
-          console.log("account", account);
           this.$sessionStorage.store(this.CURRENT_USER_KEY, account);
           resolve(account);
         },
         err => {
-          console.log("login error ---------- ", err);
           this.logout();
           reject(err);
         }
