@@ -1,0 +1,12 @@
+<button type="button" class="btn  dropdown-toggle topbar-link" id="navbarDropdownAccount"  style="color: white"
+        (click)="menu.toggle($event)">
+  <i class="fas fa-user"></i>
+</button>
+<p-overlayPanel #menu appendTo="body">
+              <span> <img class="profile-img-card" style="border-radius: 50%;" width="50" height="50"
+                          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/> &nbsp; <strong>{{username}}</strong> </span>
+  <hr>
+  <button type="button" (click)="logout()" class="btn btn-link"><i class="fas fa-bell"></i> Notifications</button>
+  <hr>
+  <button type="button" (click)="logout()" class="btn btn-link"><i class="fas fa-sign-out-alt"></i> Logout</button>
+</p-overlayPanel>
