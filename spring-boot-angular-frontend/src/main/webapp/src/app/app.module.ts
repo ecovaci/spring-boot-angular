@@ -26,12 +26,12 @@ import {AuthExpiredInterceptor} from "./core/interceptors/auth-expired.intercept
 import {NgxSpinnerModule} from "ngx-spinner";
 import {TableModule} from "primeng/table";
 import {MyUtils} from "./shared/utilities/utils";
+import {CoreModule} from "./core/core.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    /*    UserListComponent,
-        UserFormComponent,*/
     LoginComponent
   ],
   imports: [
@@ -53,7 +53,9 @@ import {MyUtils} from "./shared/utilities/utils";
     MenuModule,
     OverlayPanelModule,
     PanelModule,
-    TableModule
+    TableModule,
+    CoreModule,
+    SharedModule
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
