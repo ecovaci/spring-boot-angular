@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
 import {LayoutComponent} from './layout/layout.component';
 import {LogoutComponent} from './logout/logout.component';
-import {ConfirmDialogModule, OverlayPanelModule, PanelMenuModule} from "primeng/primeng";
 import {HomeComponent} from "./home/home.component";
 import {NavbarComponent} from "./navbar/navbar.component";
+import {SharedModule} from "../shared/shared.module";
+import {LoginComponent} from "../shared/login/login.component";
 
 @NgModule({
   declarations: [
@@ -14,10 +14,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
     HomeComponent,
     NavbarComponent],
   imports: [
-    CommonModule,
-    OverlayPanelModule,
-    PanelMenuModule,
-    ConfirmDialogModule
+    SharedModule
   ]
 })
 export class CoreModule {

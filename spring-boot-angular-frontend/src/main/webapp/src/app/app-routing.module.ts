@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from "./core/login/login.component";
+import {LoginComponent} from "./shared/login/login.component";
 import {AuthGaurdService} from "./core/services/auth-gaurd.service";
 import {LayoutComponent} from "./core/layout/layout.component";
 import {HomeComponent} from "./core/home/home.component";

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../shared/models/user";
-import {AuthService} from "../services/auth.service";
+import {User} from "../models/user";
+import {AuthService} from "../../core/services/auth.service";
 import {Router} from "@angular/router";
-import {EventService} from "../services/event.service";
-import {EventModel, EventType} from "../../shared/models/event";
+import {EventService} from "../../core/services/event.service";
+import {EventModel, EventType} from "../models/event";
 
 @Component({
   selector: 'app-login',

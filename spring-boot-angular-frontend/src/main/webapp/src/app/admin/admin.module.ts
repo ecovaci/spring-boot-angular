@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import {TableModule} from "primeng/table";
 import {FormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
+import {UserService} from "../core/services/user.service";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import {SharedModule} from "../shared/shared.module";
     TableModule,
     FormsModule,
     SharedModule
+  ],
+  providers:[
+    UserService
   ]
 })
 export class AdminModule { }
