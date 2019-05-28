@@ -15,7 +15,7 @@ export class EventService {
   }
 
   subscribe(observer: PartialObserver<EventModel>, type: EventType) {
-    if (type !== undefined) {
+    if (type != null) {
       this.subject.pipe(filter((e) => e.eventType as EventType === type as EventType)).subscribe(observer);
     } else {
       this.subject.subscribe(observer);
