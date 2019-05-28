@@ -46,6 +46,9 @@ export class UserListComponent implements OnInit {
         this.users = data.content;
         this.totalRecords = data.totalElements;
         this.loading = false;
+      },
+      error : err => {
+        this.loading = false;
       }
     });
   }

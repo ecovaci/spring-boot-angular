@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 			.exceptionHandling()
-            .authenticationEntryPoint(new Http403ForbiddenEntryPoint())
+            .authenticationEntryPoint(new HttpForbiddenEntryPoint())
 			.and()
 				.formLogin().loginProcessingUrl("/api/authentication")
 					.successHandler(ajaxAuthenticationSuccessHandler())

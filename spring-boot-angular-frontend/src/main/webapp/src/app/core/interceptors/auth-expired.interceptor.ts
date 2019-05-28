@@ -8,24 +8,28 @@ import {EventModel, EventType} from "../../shared/models/event";
 
 @Injectable()
 export class AuthExpiredInterceptor implements HttpInterceptor {
-    constructor(
-        private eventService: EventService,
-        private authServerProvider: AuthServerProvider
-    ) {}
+  constructor(
+    private eventService: EventService,
+    private authServerProvider: AuthServerProvider
+  ) {
+  }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return next.handle(request).pipe(
-            tap(
-                (event: HttpEvent<any>) => {},
-                (err: any) => {
-                    if (err instanceof HttpErrorResponse) {
-                        if (err.status === 403 && err.url && !err.url.includes('/api/account')) {
-                            this.authServerProvider.logout();
-                            this.eventService.broadcast(new EventModel(EventType.OpenLoginDialog));
-                        }
-                    }
-                }
-            )
-        );
-    }
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      tap(
+        (event: HttpEvent<any>) => {
+        },
+        (err: any) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401 && err.url && !err.url.includes('/api/account')) {
+              this.authServerProvider.logout();
+              this.eventService.broadcast(new EventModel(EventType.LoginRequired));
+            } else if (err.status === 403) {
+              this.eventService.broadcast(new EventModel(EventType.AccessDenied));
+            }
+          }
+        }
+      )
+    );
+  }
 }

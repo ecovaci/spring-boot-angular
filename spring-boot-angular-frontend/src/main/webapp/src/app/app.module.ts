@@ -1,15 +1,16 @@
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
-import {UserService} from './core/services/user.service';
 import {NgxWebstorageModule} from "ngx-webstorage";
-import {ConfirmationService} from "primeng/primeng";
+import {ConfirmationService, MessagesModule} from "primeng/primeng";
 import {AuthExpiredInterceptor} from "./core/interceptors/auth-expired.interceptor";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {createTranslateLoader} from "./app.translate.factory";
 
 @NgModule({
   declarations: [
@@ -20,9 +21,17 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppRoutingModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     NgxSpinnerModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    MessagesModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

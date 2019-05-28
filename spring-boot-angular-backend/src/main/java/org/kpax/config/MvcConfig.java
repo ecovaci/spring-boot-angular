@@ -13,9 +13,7 @@ import java.util.List;
 public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		//registry.addViewController("/").setViewName("/en/index.html");
-		registry.addViewController("/ng-app-en/**").setViewName("/en/index.html");
-		registry.addViewController("/ng-app-ro/**").setViewName("/ro/index.html");
+		registry.addViewController("/ng-app/**").setViewName("/index.html");
 	}
 
 	@Override

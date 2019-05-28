@@ -5,7 +5,6 @@ import {LogoutComponent} from './logout/logout.component';
 import {HomeComponent} from "./home/home.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {SharedModule} from "../shared/shared.module";
-import {LoginComponent} from "../shared/login/login.component";
 
 @NgModule({
   declarations: [

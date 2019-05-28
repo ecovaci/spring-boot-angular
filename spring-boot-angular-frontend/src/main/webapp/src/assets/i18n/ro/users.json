@@ -1,0 +1,42 @@
+{
+  "appTitle": "Ejemplo de aplicacion en Angular 5!!!",
+  "back": "Atras",
+  "reset": "Limpiar",
+  "loading": "Cargando ...",
+  "aboutUs": "Sobre nosotros",
+  "help": "Ayuda",
+  "poweredBy": "Creado por",
+  "license": "Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.",
+  "logout": "Desconectarse",
+  "name": "Nume",
+  "menu": {
+    "heroes": "Heroes",
+    "villains": "Villanos",
+    "aboutUs": "Sobre nosotros"
+  },
+  "login": {
+    "label-username": "Usuario",
+    "label-password": "Contraseña",
+    "placeholders": {
+      "username": "Entra usuario ...",
+      "password": "Entra contraseña ..."
+    },
+    "error-no-token-sent": "Token no enviado durante la autenticación",
+    "error-user-unauthorized": "El usuario no está autorizado"
+  },
+  "modalMessage": {
+    "yesButton": "Si",
+    "noButton": "No",
+    "closeButton": "Cerrar"
+  },
+  "validations": {
+    "required": {
+      "name": "El campo nombre es obligatorio",
+      "username": "El campo usuario es obligatorio",
+      "password": "La Contraseña es obligatoria"
+    },
+    "numeric": {
+      "editorial": "Selecciona una editorial"
+    }
+  }
+}

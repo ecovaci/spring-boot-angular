@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.authenticate(this.user)
       .then((value) => {
-        this.eventService.broadcast(new EventModel(EventType.CloseLoginDialog));
+        this.eventService.broadcast(new EventModel(EventType.LoginSuccess));
         this.router.navigate(['home']);
       }).catch((reason) => {
       if (typeof reason.error == "string") {

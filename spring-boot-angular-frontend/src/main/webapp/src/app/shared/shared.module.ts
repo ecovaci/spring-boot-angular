@@ -17,6 +17,7 @@ import {
 } from "primeng/primeng";
 import {TableModule} from "primeng/table";
 import {LoginComponent} from "./login/login.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {LoginComponent} from "./login/login.component";
     OverlayPanelModule,
     PanelModule,
     TableModule,
-    LoginComponent
+    LoginComponent,
+    TranslateModule
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import {LoginComponent} from "./login/login.component";
     MenuModule,
     OverlayPanelModule,
     PanelModule,
-    TableModule
+    TableModule,
+    TranslateModule
   ]
 })
 export class SharedModule {

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {PartialObserver, Subject} from "rxjs";
 import {EventModel, EventType} from "../../shared/models/event";
 import "rxjs-compat/add/operator/filter";
+import {filter} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class EventService {
   constructor() {
   }
 
-  subscribe(observer: PartialObserver<EventModel>, type?: EventType) {
-    if (type) {
-      this.subject.filter((e) => e.eventType === type).subscribe(observer);
+  subscribe(observer: PartialObserver<EventModel>, type: EventType) {
+    if (type !== undefined) {
+      this.subject.pipe(filter((e) => e.eventType as EventType === type as EventType)).subscribe(observer);
     } else {
       this.subject.subscribe(observer);
     }
