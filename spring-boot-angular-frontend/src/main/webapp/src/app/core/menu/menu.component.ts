@@ -5,11 +5,11 @@ import {Router} from "@angular/router";
 import {LogoutComponent} from "../logout/logout.component";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
-export class NavbarComponent extends LogoutComponent {
+export class MenuComponent extends LogoutComponent {
   items: MenuItem[];
 
   constructor(authService: AuthService, router: Router,
