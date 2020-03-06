@@ -13,12 +13,6 @@ import java.util.List;
 public class MvcConfigDev implements WebMvcConfigurer {
 
 	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/ng-app/**").setViewName("/index.html");
-		registry.addViewController("/login").setViewName("/index.html");
-	}
-
-	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		argumentResolvers.add(new FilterRequestArgumentResolver());
 	}
