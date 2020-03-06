@@ -27,3 +27,5 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+/spring-boot-angular-backend/target/
+/spring-boot-angular-frontend/src/main/webapp/node/

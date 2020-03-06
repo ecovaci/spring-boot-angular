@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
-public class TestService {
+public class UserService {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -24,8 +24,7 @@ public class TestService {
 	TestRepository testRepository;
 
 	public Page<User> getUsers(Pageable pageable, Filter[] filters) {
-		JPAQuery<User> query = new JPAQuery<User>(entityManager);
-		query = query.from(QUser.user);
+		JPAQuery<User> query = new JPAQuery<User>(entityManager).from(QUser.user);
 		return testRepository.executeQuery(query, pageable, filters);
 	}
 

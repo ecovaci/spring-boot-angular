@@ -16,27 +16,26 @@ import java.util.stream.Collectors;
 
 public class FilterRequestArgumentResolver implements HandlerMethodArgumentResolver {
 
-	@Override
-	public boolean supportsParameter(MethodParameter methodParameter) {
-		return methodParameter.getParameterAnnotation(Filterable.class) != null;
-	}
+    @Override
+    public boolean supportsParameter(MethodParameter methodParameter) {
+        return methodParameter.getParameterAnnotation(Filterable.class) != null;
+    }
 
-	@Override
-	public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer,
-			NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
-		HttpServletRequest request = (HttpServletRequest) nativeWebRequest.getNativeRequest();
+    @Override
+    public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer,
+                                  NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
+        HttpServletRequest request = (HttpServletRequest) nativeWebRequest.getNativeRequest();
 
-		//@formatter:off
-		Map<String,String> filterMap = Collections.list(request.getParameterNames()).stream()
-				.filter(name -> name.startsWith("_f(") && name.endsWith(")"))
-				.collect(Collectors.toMap(name -> name.substring(3, name.length() - 1), name -> request.getParameter(name)));
+        Map<String, String> filterMap = Collections.list(request.getParameterNames()).stream()
+                .filter(name -> name.startsWith("_f(") && name.endsWith(")"))
+                .collect(Collectors.toMap(name -> name.substring(3, name.length() - 1), name -> request.getParameter(name)));
 
-		//@formatter:on
-
-		return filterMap.entrySet().stream().map(entry -> {
+		Filter[] filters = filterMap.entrySet().stream().map(entry -> {
 			String key = entry.getKey();
 			String[] split = key.split(",");
 			return new Filter(split[0], FilterType.valueOf(split[1]), entry.getValue());
 		}).toArray(Filter[]::new);
-	}
+		System.out.println(filters);
+		return filters;
+    }
 }

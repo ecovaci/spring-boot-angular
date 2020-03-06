@@ -3,7 +3,7 @@ package org.kpax.controller;
 import org.kpax.entity.User;
 import org.kpax.filfter.model.Filter;
 import org.kpax.repository.UserRepository;
-import org.kpax.service.TestService;
+import org.kpax.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,16 +19,15 @@ public class UserController {
 	private UserRepository userRepository;
 
 	@Autowired
-	private TestService testService;
+	private UserService userService;
 
 	@GetMapping("/users/list")
 	public Page<User> getUsers(Pageable pageable, @Filterable Filter[] filters) {
-		System.out.println("+++++ ==== Get users === +++++ filters" + Arrays.toString(filters));
-		return testService.getUsers(pageable, filters);
+		return userService.getUsers(pageable, filters);
 	}
 
 	@PostMapping("/users/add")
-	void addUser(@RequestBody User user) {
+	public void addUser(@RequestBody User user) {
 		userRepository.save(user);
 	}
 }
