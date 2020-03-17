@@ -35,7 +35,7 @@ public class FilterRequestArgumentResolver implements HandlerMethodArgumentResol
 			String[] split = key.split(",");
 			return new Filter(split[0], FilterType.valueOf(split[1]), entry.getValue());
 		}).toArray(Filter[]::new);
-		System.out.println(filters);
 		return filters;
     }
+
 }

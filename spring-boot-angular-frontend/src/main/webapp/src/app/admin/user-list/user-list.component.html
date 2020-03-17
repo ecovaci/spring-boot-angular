@@ -1,3 +1,4 @@
+<p id="user-list-title">User list</p>
 <p-table #table [columns]="cols" [value]="users" [lazy]="true" (onLazyLoad)="loadCarsLazy($event)" [paginator]="true"
          [rows]="4" [totalRecords]="totalRecords" [loading]="loading" [resizableColumns]="true">
   <ng-template pTemplate="header" let-columns>

@@ -24,12 +24,11 @@ export namespace Utils {
   }
 
 
-
 }
 
 @Injectable()
 export class MyUtils {
-   filter(table, value, field, filterMatchMode): void {
+  filter(table, value, field, filterMatchMode): void {
     table.first = 0;
     table.filter(value, field, filterMatchMode);
   }

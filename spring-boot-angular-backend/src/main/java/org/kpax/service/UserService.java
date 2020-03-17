@@ -21,7 +21,7 @@ public class UserService {
 	private EntityManager entityManager;
 
 	@Autowired
-	TestRepository testRepository;
+	private TestRepository testRepository;
 
 	public Page<User> getUsers(Pageable pageable, Filter[] filters) {
 		JPAQuery<User> query = new JPAQuery<User>(entityManager).from(QUser.user);

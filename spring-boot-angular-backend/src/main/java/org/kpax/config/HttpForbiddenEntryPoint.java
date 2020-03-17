@@ -18,11 +18,11 @@ public class HttpForbiddenEntryPoint implements AuthenticationEntryPoint {
 	 * Always returns a 403 error code to the client.
 	 */
 	public void commence(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException arg2) throws IOException, ServletException {
+			AuthenticationException authException) throws IOException, ServletException {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Pre-authenticated entry point called. Rejecting access");
 		}
-		if (arg2 instanceof InsufficientAuthenticationException) {
+		if (authException instanceof InsufficientAuthenticationException) {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied");
 		} else {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");

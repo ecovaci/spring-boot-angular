@@ -4,8 +4,6 @@ import {UserService} from '../../core/services/user.service';
 import {LazyLoadEvent} from "primeng/api";
 import {PUtilsService} from "../../core/services/p-utils.service";
 
-import {MyUtils, Utils} from '../../shared/utilities/utils'
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -21,7 +19,7 @@ export class UserListComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private userService: UserService, public putils:PUtilsService) {
+  constructor(private userService: UserService, public putils: PUtilsService) {
     //event.first = First row offset
     //event.rows = Number of rows per page
     //event.sortField = Field name to sort with
@@ -47,7 +45,7 @@ export class UserListComponent implements OnInit {
         this.totalRecords = data.totalElements;
         this.loading = false;
       },
-      error : err => {
+      error: err => {
         this.loading = false;
       }
     });
