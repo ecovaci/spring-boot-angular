@@ -72,6 +72,12 @@
           "configurations": {
             "production": {
               "browserTarget": "np-app:build:production"
+            },
+            "dev": {
+              "host": "0.0.0.0",
+              "proxyConfig": "proxy.conf.json",
+              "baseHref": "/ng-app",
+              "disableHostCheck": true
             }
           }
         },
@@ -120,7 +126,8 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js"
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "np-app:serve:dev"
           },
           "configurations": {
             "production": {

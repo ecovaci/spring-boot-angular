@@ -16,11 +16,21 @@ export class AppPage {
             })
             .then(function () {
                 return element(by.id("form-login-btn")).click();
-            })
+            }) .then(function () {
+                return browser.wait(function () {
+                    return element(by.id("home-component-id")).isPresent();
+                }, 2000);
+            });
     }
 
     navigateToUsers () {
-        return browser.get(browser.baseUrl + "/ng-app/users/list") as Promise<any>;
+        //return browser.setLocation("/ng-app/users/list");
+
+        return browser.get(browser.baseUrl + "/ng-app/users/list").then(function () {
+            return browser.wait(function () {
+                return element(by.id("user-list-title")).isPresent();
+            }, 2000);
+        });
     }
 
     checkTitle() {

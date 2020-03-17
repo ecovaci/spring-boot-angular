@@ -41,20 +41,6 @@ describe('workspace-project App', () => {
         });
     });
 
-    it('should find the title', (done) => {
-        page.checkTitle().then(function (result) {
-            if (result) {
-                done();
-            } else {
-                done.fail('Title not found');
-            }
-            // Success
-        }, function (reason) {
-            // Promise is rejected
-            done.fail(reason);
-        });
-    });
-
     afterEach(async () => {
         // Assert that there are no errors emitted from the browser
         const logs = await browser.manage().logs().get(logging.Type.BROWSER);
