@@ -16,14 +16,15 @@ export class AppPage {
             })
             .then(function () {
                 return element(by.id("form-login-btn")).click();
-            }) .then(function () {
+            })
+            .then(function () {
                 return browser.wait(function () {
                     return element(by.id("home-component-id")).isPresent();
                 }, 2000);
             });
     }
 
-    navigateToUsers () {
+    navigateToUsers() {
         //return browser.setLocation("/ng-app/users/list");
 
         return browser.get(browser.baseUrl + "/ng-app/users/list").then(function () {
