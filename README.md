@@ -22,6 +22,8 @@ It has two Maven modules:
 
 ```$ npm start ```
 
+Then access: http://localhost:4200 and login with john/123
+
 ### b) Production mode
 
 1) Compile the application
@@ -31,3 +33,5 @@ It has two Maven modules:
 2) Run the generated jar
 
 ```$ java -jar "-Dspring.profiles.active=prod" .\spring-boot-angular-backend-0.0.1-SNAPSHOT.jar```
+
+Then access: http://localhost:8080 and login with john/123
