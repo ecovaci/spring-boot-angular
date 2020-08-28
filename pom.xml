@@ -17,30 +17,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.5.RELEASE</version>
+        <version>2.3.1.RELEASE</version>
         <relativePath/>
     </parent>
 
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <url>http://192.168.0.101:8882/repository/maven-public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <url>http://192.168.0.101:8882/repository/maven-public/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.kpax</groupId>
-                <artifactId>filfter</artifactId>
-                <version>1.0.1-RELEASE</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>

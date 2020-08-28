@@ -1,8 +1,8 @@
 package org.kpax.config;
 
 import org.kpax.controller.Filterable;
-import org.kpax.filfter.model.Filter;
-import org.kpax.filfter.model.FilterType;
+import org.kpax.repository.support.model.Filter;
+import org.kpax.repository.support.model.FilterType;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

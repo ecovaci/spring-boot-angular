@@ -1,8 +1,8 @@
 package org.kpax.controller;
 
 import org.kpax.entity.User;
-import org.kpax.filfter.model.Filter;
 import org.kpax.repository.UserRepository;
+import org.kpax.repository.support.model.Filter;
 import org.kpax.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
