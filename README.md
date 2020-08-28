@@ -20,14 +20,14 @@ It has two Maven modules:
 
 2) Start the frontend
 
-```$npm start ```
+```$ npm start ```
 
 ### b) Production mode
 
 1) Compile the application
 
-```mvn clean package```
+```$ mvn clean package```
 
 2) Run the generated jar
 
-``` java -jar "-Dspring.profiles.active=prod" .\spring-boot-angular-backend-0.0.1-SNAPSHOT.jar```
+```$ java -jar "-Dspring.profiles.active=prod" .\spring-boot-angular-backend-0.0.1-SNAPSHOT.jar```
