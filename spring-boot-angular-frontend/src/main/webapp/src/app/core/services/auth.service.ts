@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AuthServerProvider} from "./auth-provider.service";
 import {Account} from "../../shared/models/account";
 import {SessionStorageService} from 'ngx-webstorage';
-import * as _ from 'lodash';
+import _ from 'lodash-es';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import {LazyLoadEvent} from "primeng/api";
 import {HttpParams} from "@angular/common/http";
-import * as _ from 'lodash';
+import _ from 'lodash-es';
 import {Injectable} from "@angular/core";
 
 /**
