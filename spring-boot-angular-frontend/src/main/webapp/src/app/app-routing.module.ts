@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./shared/login/login.component";
-import {AuthGaurdService} from "./core/services/auth-gaurd.service";
+import {AuthGuardService} from "./core/services/auth-guard.service";
 import {LayoutComponent} from "./core/layout/layout.component";
 import {HomeComponent} from "./core/home/home.component";
 
@@ -9,17 +9,18 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [AuthGaurdService],
+    canActivate: [AuthGuardService],
     children: [
       {
         path: '',
         component: HomeComponent,
         pathMatch: 'full',
-        canActivate: [AuthGaurdService]
+        canActivate: [AuthGuardService]
       },
       {
-        path: 'users', loadChildren: './admin/admin.module#AdminModule',
-        canActivate: [AuthGaurdService]
+        path: 'users',
+        loadChildren: './admin/admin.module#AdminModule',
+        canActivate: [AuthGuardService]
       }
     ]
   },

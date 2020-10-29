@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
     this.eventService.subscribe({
       next: value => {
-        console.log('Received z message', value);
+        console.log('Received AccessDenied message', value);
         this.msgs = [];
         this.msgs.push({severity:'error', summary:'Error Message', detail:'Access denied!'});
       }
@@ -56,14 +56,14 @@ export class AppComponent implements OnInit {
 
     this.eventService.subscribe({
       next: value => {
-        console.log('Received y message', value);
+        console.log('Received LoginSuccess message', value);
         this.displayLoginDialog = false;
       }
     }, EventType.LoginSuccess);
 
     this.eventService.subscribe({
       next: value => {
-        console.log('Received x message', value);
+        console.log('Received LoginRequired message', value);
         this.displayLoginDialog = true;
       }
     }, EventType.LoginRequired);

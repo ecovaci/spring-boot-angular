@@ -26,7 +26,7 @@ export class MenuComponent extends LogoutComponent {
           label: 'Users',
           icon: 'pi pi-fw pi-plus',
           items: [
-            {label: 'List', icon: 'pi pi-fw pi-user-plus', routerLink: '/users/list', id: 'xyxyxy'},
+            {label: 'List', icon: 'pi pi-fw pi-user-plus', routerLink: '/users/list'},
             {label: 'Filter', icon: 'pi pi-fw pi-filter'}
           ]
         }
